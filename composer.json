@@ -16,7 +16,7 @@
     "config": {
 
         "platform-check": false
-    }
+    },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.17",
