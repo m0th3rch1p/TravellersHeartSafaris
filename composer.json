@@ -56,16 +56,12 @@
         }
     },
     "config": {
-        "platform-check": false,
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true
-        },
-        "platform": {
-            "php": "8.0"
-         }
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
