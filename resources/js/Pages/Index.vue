@@ -299,11 +299,9 @@ onMounted(() => {
                 <div class="row">
                     <div class="col-xs-12">
                         <ul id="filter-list">
-                            <li class="filter active" data-filter="all">ALL</li>
-                            <li class="filter" data-filter="tours">Safaris</li>
-                            <li class="filter" data-filter="flights">Game Drives</li>
-                            <li class="filter" data-filter="cruises">Hikes/cycling</li>
-                            <li class="filter" data-filter="hotels">hotels</li>
+                            <li class="filter active" data-filter="all">
+                                <a style="color: #ffffff;" href="https://www.instagram.com/travellersheart_safaris/" target="_blank">Visit Our Page</a>
+                            </li>
                         </ul><!-- @end #filter-list -->
                     </div>
                 </div>
