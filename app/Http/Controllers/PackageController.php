@@ -78,7 +78,7 @@ class PackageController extends Controller
         $data = Validator::make(['id' => $id], ['id' => 'required|numeric|exists:packages,id'])->validated();
         return Inertia::render('Admin/EditPackage', [
             'categories' => Category::select('id', 'name')->latest()->get(),
-            'package' => Package::select('id', 'title', 'description', 'post', 'category_id')->where('id', $data['id'])->first()
+            'package' => Package::select('id', 'title', 'description', 'post', 'category_id', 'days', 'nights')->where('id', $data['id'])->first()
         ]);
     }
 
@@ -114,7 +114,7 @@ class PackageController extends Controller
     public function destroy($id)
     {
         $data = Validator::make(['id' => $id], ['id' => 'required|numeric|exists:categories,id'])->validated();
-    
+
         Package::where('id', $data['id'])->delete();
         return response()->redirectTo('/admin/packages');
     }
