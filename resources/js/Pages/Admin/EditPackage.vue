@@ -38,7 +38,7 @@ const storePackage = () => {
     if(form.errors && Object.keys(form.errors).length) return;
 
     form.processing = true;
-    form.put(`/admin/packages/${props.package.id}`, {
+    form.transform((data) => ({...data, _method: "PUT"})).post(`/admin/packages/${props.package.id}`, {
         onSuccess: () => {
             form.reset();
             form.processing = false;
