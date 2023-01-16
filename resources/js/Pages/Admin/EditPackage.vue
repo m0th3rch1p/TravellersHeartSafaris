@@ -21,8 +21,8 @@ const form = useForm({
     package_post: props.package.post,
     feature_image: null,
     category_id: props.package.category_id,
-    days: 1,
-    nights: 0
+    days: props.package.days,
+    nights: props.package.nights
 });
 
 const storePackage = () => {
