@@ -64,7 +64,7 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
-                                        <ResponsiveNavLink :href="`/admin/categories`"> Categories </ResponsiveNavLink>
+                                        <ResponsiveNavLink :href="`/admin/links`"> Instagram Links </ResponsiveNavLink>
                                         <ResponsiveNavLink :href="`/admin/packages`"> Packages </ResponsiveNavLink>
                                         <DropdownLink :href="route('logout')" method="post" as="button">
                                             Log Out

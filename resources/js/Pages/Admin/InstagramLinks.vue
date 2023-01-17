@@ -31,7 +31,7 @@ const storeCategory = () => {
         form.setError('link', 'link field is required');
         return;
     }
-    
+
     form.processing = true;
     if(update.value) {
         form.put(`/admin/links/${selectedCategory.value.id}`, {
@@ -66,7 +66,7 @@ onMounted(() => {
             }
         } else if (action === 'edit') {
             selectedCategory.value = props.links.filter(({ id }) => p_id == id )[0];
-            form.name = selectedCategory.value.name;
+            form.link = selectedCategory.value.link;
             update.value = true;
         }
     });
@@ -118,7 +118,7 @@ onMounted(() => {
         <div class="py-12 pt-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <DataTable id="dt" :options="{responsive: true}" :data="links" 
+                    <DataTable id="dt" :options="{responsive: true}" :data="links"
                     :columns="[{data: 'link'}, {data: 'created_at', render: (data) => new Date(data).toDateString()}, {data: 'updated_at', render: (data) => new Date(data).toDateString()}, {data: null, render: (data) => {
                     return `<button data-type=edit data-id=${data.id} class='inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 mr-3'>Edit</button> <button data-type=del data-id=${data.id} class='inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150'>Delete</button>`
                 }}]" class="display table table-responsive">
