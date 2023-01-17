@@ -1,8 +1,8 @@
 <script setup>
 import { Link, useForm } from '@inertiajs/inertia-vue3';
 import { onMounted, ref } from 'vue';
-
-import VueTinySlider from 'vue-tiny-slider';
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Navigation, Slide } from 'vue3-carousel'
 
 import MainLayout from '@/Layouts/MainLayout.vue';
 
@@ -20,6 +20,19 @@ const contactForm = useForm({
     subject: '',
     message: ''
 });
+
+const breakPoints = {
+    // 700px and up
+    700: {
+        itemsToShow: 2.5,
+        snapAlign: 'center',
+    },
+    // 1024 and up
+    1024: {
+        itemsToShow: 3.5,
+        snapAlign: 'start',
+    },
+};
 
 const sendMessage = () => {
     contactForm.clearErrors();
@@ -293,26 +306,63 @@ onMounted(() => {
                 <div class="row">
                     <div class="col-xs-12">
                         <ul id="filter-list">
-                                <li class="filter active" data-filter="all">
+                            <li class="filter active" data-filter="all">
                                 <a style="color: #ffffff;" href="https://www.instagram.com/travellersheart_safaris/"
                                     target="_blank">Visit Our Page</a>
-                                </li>
+                            </li>
                         </ul><!-- @end #filter-list -->
                     </div>
                 </div>
             </div>
+            <Carousel :autoplay="2000" :items-to-show="1" :wrap-around="true" :breakpoints="breakPoints">
+                <Slide v-for="link in links" :key="link">
+                    <div class="carousel__item">
+                        <div class="thumb" v-html="link.link"></div>
+                    </div>
+                </Slide>
+                <template #addons>
+                    <Navigation />
+                </template>
+            </Carousel>
+        </section>
 
-            <ul class="gallery-item">
-                <VueTinySlider :mouse-drag="true" :loop="false" items="3" gutter="20">
-                    <li v-for="link in links" id="gallery" class="gallery tours hotels mix_all"
-                    style="display: inline-block;  opacity: 1;">
-                        <div class="thumb" v-html="link.link">
-                        
-                        </div><!--end post thumb-->
-                    </li>
-                </VueTinySlider>
-            </ul>
+        <!-- Testimonials -->
+        <section id="testimonials">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section-title text-center">
+                            <h1>What our clients say...</h1>
+                        </div>
+                    </div>
+                </div>
 
+                <Carousel :autoplay="2000" :items-to-show="1"  :wrap-around="true">
+                            <Slide v-for="slide in 9" :key="slide">
+                                <div class="carousel__item">
+                                    <div class="testimonial-item text-center">
+                                        <i class="fa fa-quote-left"></i>
+                                        <div class="author-comments">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been the industry's standard dummy text
+                                                ever since the 1500s, when an unknown printer took a galley of type
+                                                and scrambled it to make a type specimen book.</p>
+                                        </div>
+                                        <div class="designation">
+                                            Philip Josep - <strong>Company Name</strong>
+                                        </div>
+                                        <div class="author">
+                                            <img src="/img/testimonials/1.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </Slide>
+                            <template #addons>
+                                <Navigation />
+                            </template>
+                        </Carousel>
+
+            </div>
         </section>
 
         <!-- Contact Section -->
@@ -440,16 +490,19 @@ onMounted(() => {
 </template>
 
 <style>
-@import 'tiny-slider/src/tiny-slider';
+.carousel__item {
+    width: 100%;
+}
 
-/* .gallery {
-    max-height: 609px;
-} */
 .invalid-feedback {
     color: red;
 }
 
+.thumb {
+    min-height: 700px;
+}
+
 iframe {
-    max-height: 609px;
+    max-height: none;
 }
 </style>
