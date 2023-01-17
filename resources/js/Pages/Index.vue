@@ -293,24 +293,24 @@ onMounted(() => {
                 <div class="row">
                     <div class="col-xs-12">
                         <ul id="filter-list">
-                            <VueTinySlider :mouse-drag="true" :loop="false" items="3" gutter="20">
                                 <li class="filter active" data-filter="all">
                                 <a style="color: #ffffff;" href="https://www.instagram.com/travellersheart_safaris/"
                                     target="_blank">Visit Our Page</a>
                                 </li>
-                            </VueTinySlider>
                         </ul><!-- @end #filter-list -->
                     </div>
                 </div>
             </div>
 
             <ul class="gallery-item">
-                <li v-for="link in links" id="gallery" class="gallery tours hotels mix_all"
+                <VueTinySlider :mouse-drag="true" :loop="false" items="3" gutter="20">
+                    <li v-for="link in links" id="gallery" class="gallery tours hotels mix_all"
                     style="display: inline-block;  opacity: 1;">
-                    <div class="thumb" v-html="link.link">
-
-                    </div><!--end post thumb-->
-                </li>
+                        <div class="thumb" v-html="link.link">
+                        
+                        </div><!--end post thumb-->
+                    </li>
+                </VueTinySlider>
             </ul>
 
         </section>
@@ -439,7 +439,9 @@ onMounted(() => {
     </MainLayout>
 </template>
 
-<style scoped>
+<style>
+@import 'tiny-slider/src/tiny-slider';
+
 /* .gallery {
     max-height: 609px;
 } */
