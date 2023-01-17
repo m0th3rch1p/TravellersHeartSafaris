@@ -55,18 +55,21 @@ onMounted(() => {
     document.head.appendChild(googleScript); 
 
     tns({
-        controls: false,
+        nav: false,
         container: '.gallery-item',
         items: 3,
         autoplay: true,
         responsive: {
-            "350": {
-                "items": 3,
-                "controls": true,
+            350: {
+                "items": 1,
+                "controls": false,
                 "edgePadding": 30
             },
-            "500": {
-                "items": 4
+            500: {
+                items: 2
+            },
+            1000: {
+                items: 3
             }
         }
     });
