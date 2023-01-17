@@ -2,7 +2,7 @@
 import { Link, useForm } from '@inertiajs/inertia-vue3';
 import { onMounted, ref } from 'vue';
 
-import { tns } from 'tiny-slider';
+import VueTinySlider from 'vue-tiny-slider';
 
 import MainLayout from '@/Layouts/MainLayout.vue';
 
@@ -53,26 +53,6 @@ onMounted(() => {
     let googleScript = document.createElement('script');
     googleScript.setAttribute('src', "https://instagram.com/embed.js");
     document.head.appendChild(googleScript);
-
-    tns({
-        nav: false,
-        container: '.gallery-item',
-        items: 3,
-        autoplay: true,
-        responsive: {
-            640: {
-                edgePadding: 20,
-                gutter: 20,
-                items: 2
-            },
-            700: {
-                gutter: 30
-            },
-            900: {
-                items: 3
-            }
-        }
-    });
 });
 
 </script>
@@ -313,10 +293,12 @@ onMounted(() => {
                 <div class="row">
                     <div class="col-xs-12">
                         <ul id="filter-list">
-                            <li class="filter active" data-filter="all">
+                            <VueTinySlider :mouse-drag="true" :loop="false" items="3" gutter="20">
+                                <li class="filter active" data-filter="all">
                                 <a style="color: #ffffff;" href="https://www.instagram.com/travellersheart_safaris/"
                                     target="_blank">Visit Our Page</a>
-                            </li>
+                                </li>
+                            </VueTinySlider>
                         </ul><!-- @end #filter-list -->
                     </div>
                 </div>
