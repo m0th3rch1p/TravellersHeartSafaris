@@ -54,10 +54,21 @@ onMounted(() => {
     googleScript.setAttribute('src', "https://instagram.com/embed.js");
     document.head.appendChild(googleScript); 
 
-    var slider = tns({
+    tns({
+        controls: false,
         container: '.gallery-item',
         items: 3,
-        autoplay: true
+        autoplay: true,
+        responsive: {
+            "350": {
+                "items": 3,
+                "controls": true,
+                "edgePadding": 30
+            },
+            "500": {
+                "items": 4
+            }
+        }
     });
 });
 
