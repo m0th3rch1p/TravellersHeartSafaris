@@ -21,15 +21,15 @@ const contactForm = useForm({
     message: ''
 });
 
-const sendMessage = () => { 
+const sendMessage = () => {
     contactForm.clearErrors();
-    if(!contactForm.first_name || contactForm.first_name.trim() == "") contactForm.setError('first_name', 'First name is required');
-    if(!contactForm.last_name || contactForm.last_name.trim() == "") contactForm.setError('last_name', 'Last name is required');
-    if(!contactForm.email || contactForm.email.trim() == "") contactForm.setError('email', 'Email is required');
-    if(!contactForm.subject || contactForm.subject.trim() == "") contactForm.setError('subject', 'Subject is required');
-    if(!contactForm.message || contactForm.message.trim() == "") contactForm.setError('message', 'Message is required');
+    if (!contactForm.first_name || contactForm.first_name.trim() == "") contactForm.setError('first_name', 'First name is required');
+    if (!contactForm.last_name || contactForm.last_name.trim() == "") contactForm.setError('last_name', 'Last name is required');
+    if (!contactForm.email || contactForm.email.trim() == "") contactForm.setError('email', 'Email is required');
+    if (!contactForm.subject || contactForm.subject.trim() == "") contactForm.setError('subject', 'Subject is required');
+    if (!contactForm.message || contactForm.message.trim() == "") contactForm.setError('message', 'Message is required');
 
-    if(contactForm.errors && Object.keys(contactForm.errors).length) return;
+    if (contactForm.errors && Object.keys(contactForm.errors).length) return;
 
     const btn = document.getElementById('submitBtn');
     btn.value = "Submitting";
@@ -52,7 +52,7 @@ onMounted(() => {
     //www.
     let googleScript = document.createElement('script');
     googleScript.setAttribute('src', "https://instagram.com/embed.js");
-    document.head.appendChild(googleScript); 
+    document.head.appendChild(googleScript);
 
     tns({
         nav: false,
@@ -60,15 +60,15 @@ onMounted(() => {
         items: 3,
         autoplay: true,
         responsive: {
-            350: {
-                "items": 1,
-                "controls": false,
-                "edgePadding": 30
-            },
-            500: {
+            640: {
+                edgePadding: 20,
+                gutter: 20,
                 items: 2
             },
-            1000: {
+            700: {
+                gutter: 30
+            },
+            900: {
                 items: 3
             }
         }
@@ -245,16 +245,16 @@ onMounted(() => {
                     <div class="col-xs-6 col-sm-6 col-md-3" v-for="tour_package in packages" :key="tour_package.slug">
                         <div class="package-list wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <Link :href="`/package/${tour_package.slug}`">
-                                <div class="package-thumb">
-                                    <img :src="`/storage/${tour_package.feature_image}`" alt="">
-                                    <div class="duration">
-                                        {{ tour_package.days }} days<br>{{ tour_package.nights }} nights
-                                    </div>
+                            <div class="package-thumb">
+                                <img :src="`/storage/${tour_package.feature_image}`" alt="">
+                                <div class="duration">
+                                    {{ tour_package.days }} days<br>{{ tour_package.nights }} nights
                                 </div>
-                                <div class="package-info">
-                                    <h3>{{ tour_package.title }}</h3>
-                                    <p>{{ tour_package.description }}</p>
-                                    <!-- <span class="pull-left">
+                            </div>
+                            <div class="package-info">
+                                <h3>{{ tour_package.title }}</h3>
+                                <p>{{ tour_package.description }}</p>
+                                <!-- <span class="pull-left">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -262,7 +262,7 @@ onMounted(() => {
                                         <i class="fa fa-star"></i>
                                         <span class="review-count"> - 100 reviews</span>
                                     </span> -->
-                                </div>
+                            </div>
                             </Link>
                         </div>
                     </div>
@@ -314,7 +314,8 @@ onMounted(() => {
                     <div class="col-xs-12">
                         <ul id="filter-list">
                             <li class="filter active" data-filter="all">
-                                <a style="color: #ffffff;" href="https://www.instagram.com/travellersheart_safaris/" target="_blank">Visit Our Page</a>
+                                <a style="color: #ffffff;" href="https://www.instagram.com/travellersheart_safaris/"
+                                    target="_blank">Visit Our Page</a>
                             </li>
                         </ul><!-- @end #filter-list -->
                     </div>
@@ -322,9 +323,10 @@ onMounted(() => {
             </div>
 
             <ul class="gallery-item">
-                <li v-for="link in links" id="gallery" class="gallery tours hotels mix_all" style="display: inline-block;  opacity: 1;">
+                <li v-for="link in links" id="gallery" class="gallery tours hotels mix_all"
+                    style="display: inline-block;  opacity: 1;">
                     <div class="thumb" v-html="link.link">
-                        
+
                     </div><!--end post thumb-->
                 </li>
             </ul>
@@ -396,39 +398,54 @@ onMounted(() => {
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" v-model="contactForm.first_name" name="fname" class="form-control"
-                                                placeholder="First Name">
-                                            <div class="invalid-feedback" v-if="contactForm.errors.first_name">{{ contactForm.errors.first_name }}</div>
+                                            <input type="text" v-model="contactForm.first_name" name="fname"
+                                                class="form-control" placeholder="First Name">
+                                            <div class="invalid-feedback" v-if="contactForm.errors.first_name">{{
+                                                contactForm.errors.first_name
+                                            }}</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" v-model="contactForm.last_name" name="lname" class="form-control"
-                                                placeholder="Last Name">
-                                            <div class="invalid-feedback" v-if="contactForm.errors.last_name">{{ contactForm.errors.last_name }}</div>
+                                            <input type="text" v-model="contactForm.last_name" name="lname"
+                                                class="form-control" placeholder="Last Name">
+                                            <div class="invalid-feedback" v-if="contactForm.errors.last_name">{{
+                                                contactForm.errors.last_name
+                                            }}</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" v-model="contactForm.email" name="email" class="form-control" placeholder="Email Address">
-                                    <div class="invalid-feedback" v-if="contactForm.errors.email">{{ contactForm.errors.email }}</div>
+                                    <input type="text" v-model="contactForm.email" name="email" class="form-control"
+                                        placeholder="Email Address">
+                                    <div class="invalid-feedback" v-if="contactForm.errors.email">{{
+                                        contactForm.errors.email
+                                    }}</div>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" v-model="contactForm.subject" name="subject" class="form-control" placeholder="Subject">
-                                    <div class="invalid-feedback" v-if="contactForm.errors.subject">{{ contactForm.errors.subject }}</div>
+                                    <input type="text" v-model="contactForm.subject" name="subject" class="form-control"
+                                        placeholder="Subject">
+                                    <div class="invalid-feedback" v-if="contactForm.errors.subject">{{
+                                        contactForm.errors.subject
+                                    }}</div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="6" cols="20"
-                                        placeholder="Write Something" v-model="contactForm.message"></textarea>
-                                    <div class="invalid-feedback" v-if="contactForm.errors.message">{{ contactForm.errors.message }}</div>
+                                    <textarea class="form-control" rows="6" cols="20" placeholder="Write Something"
+                                        v-model="contactForm.message"></textarea>
+                                    <div class="invalid-feedback" v-if="contactForm.errors.message">{{
+                                        contactForm.errors.message
+                                    }}</div>
                                 </div>
-                                <input type="submit" id="submitBtn" class="btn btn-primary" name="submit" value="Submit">
-                                <div v-if="messageSent" class="alert alert-success alert-dismissible fade show" role="alert">
-                                  <strong>Message Sent Succefully!</strong> You will receive a reply from our support staff as soon as possible.
-                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
+                                <input type="submit" id="submitBtn" class="btn btn-primary" name="submit"
+                                    value="Submit">
+                                <div v-if="messageSent" class="alert alert-success alert-dismissible fade show"
+                                    role="alert">
+                                    <strong>Message Sent Succefully!</strong> You will receive a reply from our support
+                                    staff as soon as possible.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                             </form>
                         </div>
