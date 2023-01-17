@@ -352,7 +352,7 @@ onMounted(() => {
                                             Philip Josep - <strong>Company Name</strong>
                                         </div>
                                         <div class="author">
-                                            <img src="/img/testimonials/1.png" alt="">
+                                            <img src="/main/img/testimonials/1.png" alt="">
                                         </div>
                                     </div>
                                 </div>
