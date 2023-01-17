@@ -92,7 +92,7 @@ class PackageController extends Controller
     public function update(UpdatePackageRequest $request, $id)
     {
         $data = $request->validated();
-        $data['id'] = Validator::make(['id' => $id], ['id' => 'required|exists:categories,id'])->validated();
+        $data['id'] = $id;
 
         $data['slug'] = Str::slug($data['title']);
         $package = Package::where('id', $data['id'])->first();
