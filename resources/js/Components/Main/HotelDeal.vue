@@ -1,6 +1,6 @@
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3';
-
+import loader from '@/vendors/main/img/loader.gif';
 
 defineProps({
     excursions: Array
@@ -23,7 +23,7 @@ defineProps({
             <ul class="tour-list">
                 <li v-for="excursion in excursions" :key="excursion.slug">
                     <div class="tour-thumb">
-                        <img class="lazy" src="/main/img/loader.gif" :data-src="`/storage/${excursion.feature_image}`" alt="">
+                        <img class="lazy" :src="loader" :data-src="`/storage/${excursion.feature_image}`" alt="">
                         <div class="overlay">
                             <div class="ovelay-inner text-center">
                                 <h2>{{ excursion.title }}</h2>
