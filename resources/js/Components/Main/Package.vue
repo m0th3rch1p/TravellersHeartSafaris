@@ -23,7 +23,7 @@ defineProps({
                         <div class="package-list wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <Link :href="`/package/${tour_package.slug}`">
                             <div class="package-thumb">
-                                <img class="lazy" :src="loader" :data-src="`/storage/${tour_package.feature_image}`" alt="">
+                                <img class="lazy" :src="loader" width="500" height="300" :data-src="`/storage/${tour_package.feature_image}`" :alt="tour_package.title">
                                 <div class="duration">
                                     {{ tour_package.days }} days<br>{{ tour_package.nights }} nights
                                 </div>
@@ -31,14 +31,6 @@ defineProps({
                             <div class="package-info">
                                 <h3>{{ tour_package.title }}</h3>
                                 <p>{{ tour_package.description }}</p>
-                                <!-- <span class="pull-left">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <span class="review-count"> - 100 reviews</span>
-                                    </span> -->
                             </div>
                             </Link>
                         </div>

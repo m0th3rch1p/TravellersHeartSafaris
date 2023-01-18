@@ -2,6 +2,7 @@
 import {useForm } from '@inertiajs/inertia-vue3';
 import { ref } from 'vue';
 
+import contactBg from '@/vendors/main/img/bg/contact-bg.webp'
 
 const messageSent = ref(false);
 const contactForm = useForm({
@@ -42,7 +43,7 @@ const sendMessage = () => {
 
 <template>
     <section id="contact-us" class="parallax" data-stellar-background-ratio="0.5"
-            style="background-image: url(/main/img/bg/contact-bg.jpg); background-position: 50% -749.617px;">
+            :style="`background-image: url(${contactBg}); background-position: 50% -749.617px;`">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">

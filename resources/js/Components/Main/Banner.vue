@@ -1,6 +1,10 @@
 <script setup>
 import { onMounted } from 'vue';
 
+import banner1 from "@/vendors/main/img/banner/1.webp";
+import banner2 from "@/vendors/main/img/banner/2.webp";
+import banner3 from "@/vendors/main/img/banner/3.webp";
+
 onMounted(() => {
     //===================== Slider Caption Animation
 	
@@ -45,7 +49,7 @@ onMounted(() => {
 
 <!-- Wrapper for slides -->
 <div class="carousel-inner" role="listbox">
-    <div class="item" style="background-image:url(/main/img/banner/1.jpg);">
+    <div class="item" :style="`background-image:url(${banner1});`">
         <div class="caption-info">
             <div class="container">
                 <div class="row">
@@ -77,7 +81,7 @@ onMounted(() => {
         </div>
     </div>
 
-    <div class="item" style="background-image:url(/main/img/banner/2.jpg);">
+    <div class="item" :style="`background-image:url(${banner2});`">
         <div class="caption-info">
             <div class="container">
                 <div class="row">
@@ -97,7 +101,7 @@ onMounted(() => {
         </div>
     </div>
 
-    <div class="item active" style="background-image:url(/main/img/banner/3.jpg);">
+    <div class="item active" :style="`background-image:url(${banner3});`">
         <div class="caption-info">
             <div class="container">
                 <div class="row">

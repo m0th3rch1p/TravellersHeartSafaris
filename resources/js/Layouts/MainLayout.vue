@@ -101,9 +101,9 @@ onMounted(() => {
 </template>
 
 <style>
-@import "https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,700";
-@import "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,400italic,700";
-@import "https://fonts.googleapis.com/css?family=Dancing+Script";
+@import "https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,700&display=swap";
+@import "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,400italic,700&display=swap";
+@import "https://fonts.googleapis.com/css?family=Dancing+Script&display=swap";
 
 @import "@/vendors/main/css/bootstrap.min.css";
 @import "@/vendors/main/css/animate.css";
