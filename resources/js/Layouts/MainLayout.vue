@@ -6,15 +6,6 @@ import "@/vendors/main/js/bootstrap.min.js";
 import "@/vendors/main/js/jquery.easing.min.js";
 import "@/vendors/main/js/wow.js";
 
-import "https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,700";
-import "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,400italic,700";
-import "https://fonts.googleapis.com/css?family=Dancing+Script";
-
-import "@/vendors/main/css/bootstrap.min.css";
-import "@/vendors/main/css/animate.css";
-import "@/vendors/main/fonts/font-awesome/css/font-awesome.min.css";
-import "@/vendors/main/style.css";
-
 import Header from '@/Components/Main/Header.vue';
 import Footer from '@/Components/Main/Footer.vue';
 
@@ -108,3 +99,14 @@ onMounted(() => {
         <slot />
     <Footer />
 </template>
+
+<style>
+@import "https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,700";
+@import "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,400italic,700";
+@import "https://fonts.googleapis.com/css?family=Dancing+Script";
+
+@import "@/vendors/main/css/bootstrap.min.css";
+@import "@/vendors/main/css/animate.css";
+@import "@/vendors/main/fonts/font-awesome/css/font-awesome.min.css";
+@import "@/vendors/main/style.css";
+</style>
