@@ -5,16 +5,6 @@ import "@/vendors/main/js/jquery.js";
 import "@/vendors/main/js/bootstrap.min.js";
 import "@/vendors/main/js/jquery.easing.min.js";
 import "@/vendors/main/js/wow.js";
-import "@/vendors/main/js/jquery.mixitup.min.js";
-import "@/vendors/main/js/jquery.fancybox.pack.js";
-import "@/vendors/main/js/waypoints.min.js";
-import "@/vendors/main/js/jquery.counterup.min.js";
-import "@/vendors/main/js/owl.carousel.min.js";
-import "@/vendors/main/js/jquery.stellar.min.js";
-import "@/vendors/main/js/bootstrap-datepicker.js";
-// import "http://maps.google.com/maps/api/js?js?sensor=false&key=AIzaSyCYI9QbpcEgmUSfnoBplXycjesknwlFW-w";
-// import "@/vendors/main/js/gmap3.min.js";
-// import "@/vendors/main/js/script.js";
 
 import Header from '@/Components/Main/Header.vue';
 import Footer from '@/Components/Main/Footer.vue';
@@ -22,11 +12,6 @@ import Footer from '@/Components/Main/Footer.vue';
 onMounted(() => {
     if(!document.body.id || document.body.id !== "page-top") document.body.id = "page-top";
 
-     //========================= preloader ================
-	$(window).on('load', function() {
-		preloader();
-	})
-	
 	//JQuery for page scrolling feature - requires JQuery Easing plugin
     $('a.page-scroll').on('click', function(event) {
 			$('.nav li').removeClass('active');
@@ -59,93 +44,7 @@ onMounted(() => {
 			);
 			wow.init();
 		}
-		
-		//============= Deals and Discount Carousel =====
-		
-		// $("#gallery").owlCarousel({
-		// 	autoplay: true,
-		// 	autoplayTimeout:2000,
-		// 	margin:30,
-		// 	nav: false,
-		// 	smartSpeed:1000,
-		// 	dots:false,
-		// 	autoplayHoverPause:true,
-		// 	loop:true,
-		// 	responsiveClass: true,
-		// 	responsive: {
-		// 	  0: {
-		// 		items: 1,
-		// 	  },
-		// 	  600: {
-		// 		items: 2,
-		// 	  },
-		// 	  1000: {
-		// 		items: 3,
-		// 	  }
-		// 	}
-		//  });
-		
-		
-		
-		//===================== Testimonials Carousel =====
-		
-		$("#testimonial-carousel").owlCarousel({
-			autoplay: true,
-			autoplayTimeout:2000,
-			margin:0,
-			nav: false,
-			smartSpeed:1200,
-			dots:true,
-			autoplayHoverPause:true,
-			loop:true,
-			responsiveClass: true,
-			responsive: {
-			  0: {
-				items: 1,
-			  },
-			  600: {
-				items: 1,
-			  },
-			  1000: {
-				items: 1,
-			  }
-			}
-		 });
-		
-		
-		//============= Portfolio section ============ 
-		
-		$('.gallery-item').mixitup({
-			targetSelector: '.gallery',
-			transitionSpeed: 650
-		});
-		$('a.fancybox').fancybox();
-		
-		/*Contact Map*/
-		var mapInfo = {"lat":"23.800446", "lon":"90.349832"}; //Change a map coordinate here!
-		try {
-			$('.map').gmap3({
-				action: 'addMarker',
-				latLng: [mapInfo.lat, mapInfo.lon],
-				map:{
-					center: [mapInfo.lat, mapInfo.lon],
-					zoom: 15
-					},
-				},
-				{action: 'setOptions', args:[{scrollwheel:false}]}
-			);
-		} catch(err) {
-
-		}
-	   /*End Contact Map*/
-		
-		
-		//============= Counter section ============ 
-		$('.counter').counterUp({
-			delay: 10,
-			time: 2000
-		});
-		
+					
 		/*============================== Back to top =========================*/
 		$(".back-top").hide();
 		
@@ -154,15 +53,6 @@ onMounted(() => {
 			return false;
 		});
 		
-		//============================ Background Scrolling ===================
-		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-				 
-		} else {
-			$(window).stellar({
-				horizontalScrolling: false,
-				responsive: true
-			});
-		}
 	
 	$(window).on('scroll', function() {
 	
@@ -185,48 +75,22 @@ onMounted(() => {
 		
 	});
 	
-	//============= Preload ============ 
-	function preloader(){
-		$(".preloaderimg").fadeOut();
-		$(".preloader").delay(200).fadeOut("slow").delay(200, function(){
-			$(this).remove();
-		});
-	}
-	
-	//===================== Slider Caption Animation
-	
-	function doAnimations( elems ) {
-		//Cache the animationend event in a variable
-		var animEndEv = 'webkitAnimationEnd animationend';
-		
-		elems.each(function () {
-			var $this = $(this),
-				$animationType = $this.data('animation');
-			$this.addClass($animationType).one(animEndEv, function () {
-				$this.removeClass($animationType);
-			});
-		});
-	}
-	
-	//Variables on page load 
-	var $myCarousel = $('#banner'),
-		$firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
-		
-	//Initialize carousel 
-	$myCarousel.carousel();
-	
-	//Animate captions in first slide on page load 
-	doAnimations($firstAnimatingElems);
-	
-	//Pause carousel  
-	$myCarousel.carousel('pause');
-	
-	
-	//Other slides to be animated on carousel slide event 
-	$myCarousel.on('slide.bs.carousel', function (e) {
-		var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
-		doAnimations($animatingElems);
-	});
+	// Lazy Loading
+	if("IntersectionObserver" in window) {
+        let lazyLoadImages = Array.from(document.querySelectorAll(".lazy"));
+		let imageObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting) {
+                    let image = entry.target;
+                    
+                    image.src = `${image.dataset.src}`;
+                    image.classList.remove("lazy");
+                    imageObserver.unobserve(image);
+                }
+            });
+        });
+        lazyLoadImages.forEach(img => imageObserver.observe(img));
+    }
 });
 </script>
 
@@ -241,10 +105,7 @@ onMounted(() => {
 @import "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,400italic,700";
 @import "https://fonts.googleapis.com/css?family=Dancing+Script";
 @import "@/vendors/main/css/bootstrap.min.css";
-@import "@/vendors/main/css/datepicker.css";
 @import "@/vendors/main/css/animate.css";
-@import "@/vendors/main/css/jquery.fancybox.css";
 @import "@/vendors/main/fonts/font-awesome/css/font-awesome.min.css";
-@import "@/vendors/main/css/owl.carousel.css";
 @import "@/vendors/main/style.css";
 </style>

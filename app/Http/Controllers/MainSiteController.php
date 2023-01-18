@@ -8,6 +8,7 @@ use App\Mail\BookTour;
 use App\Mail\ContactMessage;
 use App\Models\InstagramLink;
 use App\Models\Package;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -19,7 +20,8 @@ class MainSiteController extends Controller
         return Inertia::render('Index', [
             'packages' => Package::select('title', 'slug', 'description', 'feature_image', 'days', 'nights', 'created_at')->where('category_id', '=', 1)->latest()->get(),
             'excursions' => Package::select('title', 'slug', 'description', 'feature_image', 'days', 'nights', 'created_at')->where('category_id', '=', 2)->latest()->get(),
-            'links' => InstagramLink::select('link')->get()
+            'links' => InstagramLink::select('link')->get(),
+            'testimonials' => Testimonial::select('testimonial', 'author')->latest()->get()
         ]);
     }
 

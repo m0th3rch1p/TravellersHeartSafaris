@@ -1470,7 +1470,6 @@ blockquote{
 	border-color:#ff7e00;
 }
 .sidebar-item .input-group-addon{
-	padding:0;
 	border-color:#ccc;
 	background:#ccc;
 }
@@ -1603,7 +1602,7 @@ blockquote{
 	text-align:center;
 }
 .back-top i {
-    background: #ff7e00none repeat scroll 0 0;
+    background: #ff7e00 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
     font-size: 24px;

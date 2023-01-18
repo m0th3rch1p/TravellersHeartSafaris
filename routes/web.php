@@ -5,6 +5,7 @@ use App\Http\Controllers\InstagramLinkController;
 use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -46,6 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/links', [InstagramLinkController::class, "store"]);
     Route::put('/admin/links/{id}', [InstagramLinkController::class, "update"]);
     Route::delete('/admin/links/{id}', [InstagramLinkController::class, "destroy"]);
+
+    Route::get('/admin/testimonials', [TestimonialController::class, 'index']);
+    Route::post('/admin/testimonials', [TestimonialController::class, 'store']);
+    Route::put('/admin/testimonials', [TestimonialController::class, 'update']);
+    Route::delete('/admin/testimonials', [TestimonialController::class, 'destroy']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
