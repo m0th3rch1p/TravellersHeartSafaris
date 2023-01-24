@@ -95,6 +95,7 @@ class PackageController extends Controller
         $data['id'] = $id;
 
         $data['slug'] = Str::slug($data['title']);
+        $data['post'] = $data['package_post'];
         $package = Package::where('id', $data['id'])->first();
         if($request->hasFile('feature_image')) {
             Storage::disk('public')->delete($package->feature_image);
