@@ -96,13 +96,12 @@ class PackageController extends Controller
 
         $data['slug'] = Str::slug($data['title']);
         $package = Package::where('id', $data['id'])->first();
-        dd($data);
         if($request->hasFile('feature_image')) {
             Storage::disk('public')->delete($package->feature_image);
             $data['feature_image'] = Storage::disk('public')->put('package_images', $request->file('feature_image'));
         } else unset($data['feature_image']);
 
-        $package->update($data);
+        dd($package->update($data));
         return response()->redirectTo('/admin/packages');
     }
 
