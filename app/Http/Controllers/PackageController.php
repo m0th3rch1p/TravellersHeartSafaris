@@ -101,7 +101,7 @@ class PackageController extends Controller
             $data['feature_image'] = Storage::disk('public')->put('package_images', $request->file('feature_image'));
         } else unset($data['feature_image']);
 
-        dd($package->update($data));
+        $package->update($data);
         return response()->redirectTo('/admin/packages');
     }
 
